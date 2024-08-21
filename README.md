@@ -1,4 +1,4 @@
-#Linux Remote Flash OS Scripts
+# Linux Remote Flash OS Scripts
 
 This is is an example of using partitions to enable remote flashing of an OS running Linux. 
 
@@ -9,15 +9,16 @@ The one cost to this approach is that the disk has to already have the partition
 
 The included `install_and_swap_os.bash` script takes a .img file and the disk location (likely `/dev/mmcblk0`) as arguments. To invoke it, using an SSH instance (along an SCP transfer of the OS image) is the simplest approach. However, it could also be wrapped in an script to make it client-side something along the lines of: 
 
->
- >poll_endpoint() {
- >  If poll server == true:
- >       wget -O /tmp/image.img image url
- >       install_and_swap_os /tmp/image.img /dev/mmcblk0
- >   else:
- >       sleep 5
- >       poll_endpoint
->}
+```
+poll_endpoint() {
+  If poll server == true:
+        wget -O /tmp/image.img image url
+        install_and_swap_os /tmp/image.img /dev/mmcblk0
+    else:
+        sleep 5
+        poll_endpoint
+}
+```
 
 etc etc.
 
